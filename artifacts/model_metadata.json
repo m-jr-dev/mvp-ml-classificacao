@@ -1,0 +1,102 @@
+{
+  "dataset_url": "https://archive.ics.uci.edu/ml/machine-learning-databases/wine/wine.data",
+  "feature_columns": [
+    "alcohol",
+    "malic_acid",
+    "ash",
+    "alcalinity_of_ash",
+    "magnesium",
+    "total_phenols",
+    "flavanoids",
+    "nonflavanoid_phenols",
+    "proanthocyanins",
+    "color_intensity",
+    "hue",
+    "od280_od315_of_diluted_wines",
+    "proline"
+  ],
+  "target_column": "target",
+  "holdout_test_size": 0.2,
+  "cross_validation": {
+    "strategy": "StratifiedKFold",
+    "n_splits": 5,
+    "shuffle": true,
+    "random_state": 42,
+    "scoring": "f1_macro"
+  },
+  "ranking": [
+    {
+      "model": "KNN",
+      "best_params": {
+        "classifier__metric": "manhattan",
+        "classifier__n_neighbors": "7",
+        "classifier__weights": "uniform",
+        "preprocessor__numeric__scaler": "StandardScaler()"
+      },
+      "cv_best_score_f1_macro": 0.9789,
+      "accuracy": 1.0,
+      "precision_macro": 1.0,
+      "recall_macro": 1.0,
+      "f1_macro": 1.0
+    },
+    {
+      "model": "Naive Bayes",
+      "best_params": {
+        "classifier__var_smoothing": "1e-09",
+        "preprocessor__numeric__scaler": "StandardScaler()"
+      },
+      "cv_best_score_f1_macro": 0.9727,
+      "accuracy": 0.9722,
+      "precision_macro": 0.9744,
+      "recall_macro": 0.9762,
+      "f1_macro": 0.9743
+    },
+    {
+      "model": "Árvore de Decisão",
+      "best_params": {
+        "classifier__criterion": "gini",
+        "classifier__max_depth": "None",
+        "classifier__min_samples_split": "2",
+        "preprocessor__numeric__scaler": "passthrough"
+      },
+      "cv_best_score_f1_macro": 0.9055,
+      "accuracy": 0.9444,
+      "precision_macro": 0.9583,
+      "recall_macro": 0.9389,
+      "f1_macro": 0.9457
+    },
+    {
+      "model": "SVM",
+      "best_params": {
+        "classifier__C": "10",
+        "classifier__gamma": "scale",
+        "classifier__kernel": "rbf",
+        "preprocessor__numeric__scaler": "StandardScaler()"
+      },
+      "cv_best_score_f1_macro": 0.9927,
+      "accuracy": 0.9444,
+      "precision_macro": 0.9583,
+      "recall_macro": 0.9333,
+      "f1_macro": 0.9407
+    }
+  ],
+  "selected_model": "KNN",
+  "selected_model_metrics": {
+    "model": "KNN",
+    "best_params": {
+      "classifier__metric": "manhattan",
+      "classifier__n_neighbors": "7",
+      "classifier__weights": "uniform",
+      "preprocessor__numeric__scaler": "StandardScaler()"
+    },
+    "cv_best_score_f1_macro": 0.9789,
+    "accuracy": 1.0,
+    "precision_macro": 1.0,
+    "recall_macro": 1.0,
+    "f1_macro": 1.0
+  },
+  "thresholds": {
+    "minimum_accuracy": 0.9,
+    "minimum_f1_macro": 0.9
+  }
+}
