@@ -1,0 +1,106 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wine Classifier MVP</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <main class="page">
+        <section class="hero">
+            <div class="hero__content">
+                <p class="eyebrow">MVP de classificação</p>
+                <h1>Predição de classe de vinho</h1>
+                <p class="subtitle">
+                    Interface simples para envio dos atributos químicos do vinho e obtenção da classe prevista pelo modelo embarcado no back-end.
+                </p>
+                <div class="stats">
+                    <div class="stat-card">
+                        <span class="stat-card__label">Modelo selecionado</span>
+                        <strong>{{ selected_model }}</strong>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-card__label">Accuracy holdout</span>
+                        <strong>{{ metrics.accuracy }}</strong>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-card__label">F1 macro holdout</span>
+                        <strong>{{ metrics.f1_macro }}</strong>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="panel">
+            <form id="prediction-form" class="grid">
+                <label>
+                    <span>Alcohol</span>
+                    <input type="number" step="0.0001" name="alcohol" value="13.2" required>
+                </label>
+                <label>
+                    <span>Malic acid</span>
+                    <input type="number" step="0.0001" name="malic_acid" value="1.78" required>
+                </label>
+                <label>
+                    <span>Ash</span>
+                    <input type="number" step="0.0001" name="ash" value="2.14" required>
+                </label>
+                <label>
+                    <span>Alcalinity of ash</span>
+                    <input type="number" step="0.0001" name="alcalinity_of_ash" value="11.2" required>
+                </label>
+                <label>
+                    <span>Magnesium</span>
+                    <input type="number" step="0.0001" name="magnesium" value="100" required>
+                </label>
+                <label>
+                    <span>Total phenols</span>
+                    <input type="number" step="0.0001" name="total_phenols" value="2.65" required>
+                </label>
+                <label>
+                    <span>Flavanoids</span>
+                    <input type="number" step="0.0001" name="flavanoids" value="2.76" required>
+                </label>
+                <label>
+                    <span>Nonflavanoid phenols</span>
+                    <input type="number" step="0.0001" name="nonflavanoid_phenols" value="0.26" required>
+                </label>
+                <label>
+                    <span>Proanthocyanins</span>
+                    <input type="number" step="0.0001" name="proanthocyanins" value="1.28" required>
+                </label>
+                <label>
+                    <span>Color intensity</span>
+                    <input type="number" step="0.0001" name="color_intensity" value="4.38" required>
+                </label>
+                <label>
+                    <span>Hue</span>
+                    <input type="number" step="0.0001" name="hue" value="1.05" required>
+                </label>
+                <label>
+                    <span>OD280/OD315</span>
+                    <input type="number" step="0.0001" name="od280_od315_of_diluted_wines" value="3.4" required>
+                </label>
+                <label>
+                    <span>Proline</span>
+                    <input type="number" step="0.0001" name="proline" value="1050" required>
+                </label>
+
+                <div class="actions">
+                    <button type="submit">Executar predição</button>
+                </div>
+            </form>
+
+            <section id="result-card" class="result-card" hidden>
+                <p class="result-card__label">Resultado</p>
+                <h2 id="result-label"></h2>
+                <p id="result-meta"></p>
+            </section>
+        </section>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>
